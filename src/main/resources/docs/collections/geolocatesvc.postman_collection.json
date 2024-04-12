@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "4e1f0091-6a2e-40f2-8130-556b4f02d5dd",
+		"name": "geolocatesvc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17000682"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOSTNAME}}/geolocatesvc/ping",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"geolocatesvc",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "wiremock",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{WIREMOCK}}/maps/api/geocode/json?key=_Ab12Cd34Ef56Gh78Ij90Kl12Mn34Op56-r8St9&latlng=-26.1965843,-52.6890572",
+							"host": [
+								"{{WIREMOCK}}"
+							],
+							"path": [
+								"maps",
+								"api",
+								"geocode",
+								"json"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "_Ab12Cd34Ef56Gh78Ij90Kl12Mn34Op56-r8St9"
+								},
+								{
+									"key": "latlng",
+									"value": "-26.1965843,-52.6890572"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sucess - Lower Score",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOSTNAME}}/geocodersvc/api/v1/address?address=123%20Main%20Street%2C%20Ottawa%2C%20ON%20K1P%201J1%2C%20Canada&address=123 Main Street, Ottawa, ON K1P 1J1, Canada",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"geocodersvc",
+										"api",
+										"v1",
+										"address"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "123%20Main%20Street%2C%20Ottawa%2C%20ON%20K1P%201J1%2C%20Canada"
+										},
+										{
+											"key": "address",
+											"value": "123 Main Street, Ottawa, ON K1P 1J1, Canada"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "365"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"addressRaw\": \"123 Main Street, Ottawa, ON K1P 1J1, Canada\",\n    \"dataBc\": {\n        \"score\": 55,\n        \"precision\": \"High\",\n        \"fullAddress\": \"123 Main Street, Ottawa, ON K1P 1J1, Canada\",\n        \"faults\": [\n            \"The address may not be an actual location in Ottawa.\",\n            \"The provided coordinates may not be exact.\"\n        ],\n        \"lat\": 41.3879,\n        \"lon\": 73.2311\n    },\n    \"google\": {\n        \"lat\": 45.5234,\n        \"lon\": 75.675,\n        \"score\": 70\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "addressLocate",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "notset",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{HOSTNAME}}/geolocatesvc/api/v1/address?latitude=-26.1965843&longitude=-52.6890572",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"geolocatesvc",
+								"api",
+								"v1",
+								"address"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "-26.1965843"
+								},
+								{
+									"key": "longitude",
+									"value": "-52.6890572"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sucess - Lower Score",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOSTNAME}}/geocodersvc/api/v1/address?address=123%20Main%20Street%2C%20Ottawa%2C%20ON%20K1P%201J1%2C%20Canada&address=123 Main Street, Ottawa, ON K1P 1J1, Canada",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"geocodersvc",
+										"api",
+										"v1",
+										"address"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "123%20Main%20Street%2C%20Ottawa%2C%20ON%20K1P%201J1%2C%20Canada"
+										},
+										{
+											"key": "address",
+											"value": "123 Main Street, Ottawa, ON K1P 1J1, Canada"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "365"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"addressRaw\": \"123 Main Street, Ottawa, ON K1P 1J1, Canada\",\n    \"dataBc\": {\n        \"score\": 55,\n        \"precision\": \"High\",\n        \"fullAddress\": \"123 Main Street, Ottawa, ON K1P 1J1, Canada\",\n        \"faults\": [\n            \"The address may not be an actual location in Ottawa.\",\n            \"The provided coordinates may not be exact.\"\n        ],\n        \"lat\": 41.3879,\n        \"lon\": 73.2311\n    },\n    \"google\": {\n        \"lat\": 45.5234,\n        \"lon\": 75.675,\n        \"score\": 70\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

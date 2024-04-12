@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: geolocatesvc
+  webflux:
+    base-path: /geolocatesvc
+  active:
+    profiles: ${SPRING_PROFILES_ACTIVE:local}
+
+  data:
+    mongodb:
+      username: ${MONGO_USERNAME:admin}
+      password: ${MONGO_PASSWORD:notset}
+      database: ${MONGO_DATABASE:geolocate}
+      port: ${MONGO_PORT:27017}
+
+application:
+  environment: ${ENVIRONMENT:dev}
+
+  security:
+    username: ${API_USER_NAME:admin}
+    password: ${API_USER_PASSWORD:notset}
+
+  googleUrl: ${GOOGLE_API_ROOT_URL:http://maps.googleapis.com/maps/api/geocode/json}
+  googleApiKey: ${GOOGLE_API_KEY:testApiKey}
+
+  path:
+    ping: /ping
+    geolocatesvc: /geolocatesvc/api/v1/address

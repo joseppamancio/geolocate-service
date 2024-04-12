@@ -1,0 +1,161 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Geolocate Service API
+  description: Service to retrieve address information using lat/lon
+
+paths:
+  /api/v1/address:
+    get:
+      summary: Lookup address information using lat/lon
+      operationId: addressLocate
+      tags:
+        - address
+      parameters:
+        - name: latitude
+          in: query
+          description: Latitude
+          required: true
+          schema:
+            type: string
+        - name: longitude
+          in: query
+          description: Longitude
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Geolocate Service Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/dataResponse"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/errorResponse"
+  /ping:
+    get:
+      summary: Check is application is up and running.
+      operationId: ping
+      tags:
+        - ping
+      responses:
+        "200":
+          description: Ping Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Welcome to Geolocate Service!"
+
+components:
+  schemas:
+    # RESPONSES
+    dataResponse:
+      type: object
+      properties:
+        latParam:
+          type: string
+          description: Latitude
+          example: 48.425
+        lonParam:
+          type: string
+          description: Longitude
+          example: -123.365
+        dateTimeRequest:
+          type: string
+          description: Request date and time
+          example: "2021-07-01T12:00:00"
+        address:
+          type: string
+          description: Formatted address
+          example: "Av. Elisa Rosa Cola Padoan, 333-343 - Fraron, Pato Branco - PR, Brasil"
+        googleRaw:
+          type: googleRaw
+          description: Google API raw response
+        error:
+          type: String
+          description: Error message
+          example: " "
+
+    # ERROR RESPONSE
+    errorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: false
+          description: Indicates if the request was successful
+          example: false
+        error:
+          type: String
+          description: Error message
+          example: "Google Api did not return a successful response"
+
+    # GOOGLE RESPONSE
+    googleRaw:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              address_components:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    long_name:
+                      type: string
+                      description: Long name
+                      example: "333-343"
+                    short_name:
+                      type: string
+                      description: Short name
+                      example: "333-343"
+                    types:
+                      type: array
+                      items:
+                        type: string
+                      description: Types
+                      example: "street_number"
+              formatted_address:
+                type: string
+                description: Formatted address
+                example: "Av. Elisa Rosa Cola Padoan, 333-343 - Fraron, Pato Branco - PR, Brasil"
+              geometry:
+                type: object
+                properties:
+                  bounds:
+                    type: object
+                    properties:
+                      northeast:
+                        type: object
+                        properties:
+                          lat:
+                            type: number
+                            description: Latitude
+                            example: -26.1965843
+                          lng:
+                            type: number
+                            description: Longitude
+                            example: -52.6890572
+                      southwest:
+                        type: object
+                        properties:
+                          lat:
+                            type: number
+                            description: Latitude
+                            example: -26.1966978
+                          lng:
+                            type: number
+                            description: Longitude
+                            example: -52.6892667

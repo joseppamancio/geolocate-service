@@ -1,0 +1,17 @@
+spring:
+  active:
+    profiles: test
+
+application:
+  environment: ${ENVIRONMENT:test}
+
+  security:
+    username: ${API_USER_NAME:admin}
+    password: ${API_USER_PASSWORD:notset}
+
+  googleUrl: ${GOOGLE_API_ROOT_URL:http://localhost:9000/maps/api/geocode/json}
+  googleApiKey: ${GOOGLE_API_KEY:_Ab12Cd34Ef56Gh78Ij90Kl12Mn34Op56-r8St9} # Not a real key
+
+  path:
+    ping: /ping
+    geolocatesvc: /geolocatesvc/api/v1/address

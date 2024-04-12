@@ -1,0 +1,62 @@
+{
+  "results" : [
+    {
+      "address_components" : [
+        {
+          "long_name" : "333-343",
+          "short_name" : "333-343",
+          "types" : [ "street_number" ]
+        },
+        {
+          "long_name" : "Avenida Elisa Rosa Cola Padoan",
+          "short_name" : "Av. Elisa Rosa Cola Padoan",
+          "types" : [ "route" ]
+        },
+        {
+          "long_name" : "Fraron",
+          "short_name" : "Fraron",
+          "types" : [ "sublocality_level_1", "sublocality", "political" ]
+        },
+        {
+          "long_name" : "Pato Branco",
+          "short_name" : "Pato Branco",
+          "types" : [ "locality", "political" ]
+        },
+        {
+          "long_name" : "Pato Branco",
+          "short_name" : "Pato Branco",
+          "types" : [ "administrative_area_level_2", "political" ]
+        },
+        {
+          "long_name" : "Paraná",
+          "short_name" : "PR",
+          "types" : [ "administrative_area_level_1", "political" ]
+        },
+        {
+          "long_name" : "Brasil",
+          "short_name" : "BR",
+          "types" : [ "country", "political" ]
+        },
+        {
+          "long_name" : "85508",
+          "short_name" : "85508",
+          "types" : [ "postal_code_prefix", "postal_code" ]
+        }
+      ],
+      "formatted_address" : "Av. Elisa Rosa Cola Padoan, 333-343 - Fraron, Pato Branco - PR, Brasil",
+      "geometry" : {
+        "bounds" : {
+          "northeast" : {
+            "lat" : -26.1965843,
+            "lng" : -52.6890572
+          },
+          "southwest" : {
+            "lat" : -26.1966978,
+            "lng" : -52.6892667
+          }
+        }
+      }
+    }
+  ],
+  "status" : "OK"
+}
